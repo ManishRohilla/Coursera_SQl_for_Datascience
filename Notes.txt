@@ -1,0 +1,37 @@
+Notes for SQL Datascience Coursera
+
+\connect localhost
+
+show databases;
+use database_name;
+
+DESC table_name -- TO get table description.
+
+To retrieve data:
+
+-> SELECT * FROM table_name;
+
+-> SELECT column_name1,
+        column_name2 
+ FROM table_name;
+ 
+-> SELECT column_name FROM table_name LIMIT number_of_records;
+
+To create Table
+
+-> CREATE TABLE employee(ID int(8) PRIMARY KEY,
+                                           -> Name char(55) NOT NULL,
+                                           -> Contact int(10) NOT NULL UNIQUE,
+                                           -> Salary decimal(5,2) NOT NULL);
+                                           
+To create temporary tables -- create a copy, essentially of another table or pull a subset from another table
+
+CREATE TEMPORARY TABLE employee_pers (
+                                           -> SELECT Name,Contact from employee);
+
+To Insert Values
+
+-> INSERT INTO employee VALUES(11714083, 'Manish Kumar Rohilla',8750602,260);
+-> INSERT INTO employee(ID,Name,Contact,Salary) VALUES(11714084,'Prince Choudhary',875060621,280.00);
+                                       
+ 
