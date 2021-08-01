@@ -8,8 +8,11 @@
 --> \connect root@localhost == To connect to root localhost in Mysql shell
 
 ** CREATE USER "username"@"hostname" IDENTIFIED BY "password"; -- Create User by command **
+
 ** CREATE USER "username"@"%hostname" IDENTIFIED BY "password"; -- "%" wildcard means any string of characters with ends with "hostname".**
+
 ** CREATE USER "username"@"abc_hostname" IDENTIFIED BY "password"; -- "-" matches only one character starting with 'abc' and ending with 'hostname'.**
+
 --> CREATE ROLE 'app_dev','app_read','app_write'; == To create access roles.
 
 --> GRANT ALL ON database_name.* TO role_name_created == grant permisions to role_name_created in database_name all tables (as * is used). if database_name.table_name is written then access is granted for table_name mentioned only.
