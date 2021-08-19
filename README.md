@@ -38,7 +38,7 @@
 
 --> SELECT 'Hello, World'; == To print Hello World.
 
---> SELECT 1+2; == Will print 3
+--> SELECT 1+2; == Will print 3 with 1+2 as Column name
 
 --> SELECT col_name ,  col_name from country ORDER BY col_name DESC; == To print selected columns in descending w.r.t col_name used after ORDER BY clause
 
@@ -72,6 +72,27 @@
 
 --> CREATE TABLE test ( a INT, b VARCHAR(16), c VARCHAR(16) );
 
+--> CREATE TABLE test ( id INT NOT NULL, name VARCHAR(30), address VARCHAR(255) ,city VARCHAR(30), state CHAR(25), zip INT(10));
+
+--> CREATE TABLE employee  (ID int(8) PRIMARY KEY,
+                            Name char(55) NOT NULL,
+                            Contact int(10) NOT NULL UNIQUE,
+                            Salary decimal(5,2) NOT NULL);
+                            
+--> CREATE TABLE temp (
+  id INT UNSIGNED UNIQUE AUTO_INCREMENT PRIMARY KEY,
+  stamp TIMESTAMP,
+  name VARCHAR(64)
+);
+ == or id Datatype could be SERIAL;
+--> CREATE TABLE test (
+  id INT UNSIGNED UNIQUE AUTO_INCREMENT PRIMARY KEY,
+  a VARCHAR(32)
+);
+                            
+--> Show Create Table table_name;
+                                           
+
 ## DELETING TABLE
 
 --> DELETE FROM table_name WHERE col_name LIKE 'value_' OR col_name LIKE 'value%';
@@ -80,4 +101,74 @@
 
 --> Drop table_name; == will delete table as well as the rows.
 
-## 
+--> Drop TABLE IF EXISTS table_name;
+
+## MISC
+
+--> Show Databases;
+
+--> Use Databases_name;
+
+--> Describe table_name;
+
+--> Show tables;
+
+--> Show Table Status;
+
+--> SELECT NOW(); == Will print current date and time
+
+--> SHOW VARIABLES LIKE '%time%';
+
+--> SELECT 0 = 0;
+
+**SELECT 0 = 1;
+SELECT 0 = '0';
+SELECT '0.1' > 0;
+SELECT 0.1 < 0;
+SELECT 9 != 7;
+SELECT 9 <= 7;
+SELECT 9 >= 7;
+SELECT (9 > 7) AND (12 < 27);
+SELECT (9 > 7) OR (12 < 27);
+SELECT (9 > 7) IS TRUE;
+SELECT (9 > 7) IS NOT TRUE;
+**
+## JOINING 
+
+-->SELECT a.artist AS Artist, a.title AS Album, t.track_number AS 'Track Num',
+    t.title AS Track, t.duration AS Seconds
+  FROM album AS a
+  JOIN track AS t ON a.id = t.album_id
+  ORDER BY a.artist, a.title, t.track_number;
+
+## DATATYPES
+
+**NUMERICS**
+
+--> DECIMAL(9,2) or NUMERIC(9,2) // 9 digits total and 2 after decimal. Default is DECIMAL(10,0)
+example- 1234567.89
+
+**Strings**
+
+--> CHAR(14)
+--> VARCHAR(25)
+
+**ENUMS**
+--> CREATE TABLE test (
+  id INT UNSIGNED UNIQUE AUTO_INCREMENT PRIMARY KEY,
+  a ENUM( 'Pablo', 'Henri', 'Jackson' )
+); == ENUM OR SET
+
+** CASES **
+
+SELECT
+  CASE WHEN a < 5 THEN 'true' ELSE 'false' END AS boolA,
+  CASE WHEN b > 0 THEN 'true' ELSE 'false' END AS boolB
+  FROM booltest
+;
+
+SELECT
+  CASE a WHEN 1 THEN 'true' ELSE 'false' END AS boolA,
+  CASE b WHEN 1 THEN 'true' ELSE 'false' END AS boolB 
+  FROM booltest
+;
