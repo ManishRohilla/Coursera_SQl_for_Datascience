@@ -123,7 +123,7 @@
 
 **SELECT 0 = 1;
 SELECT 0 = '0';
-SELECT '0.1' > 0;
+SELECT '0.1' > 0; == Strign will be converted into integer then it will be compared
 SELECT 0.1 < 0;
 SELECT 9 != 7;
 SELECT 9 <= 7;
@@ -131,7 +131,8 @@ SELECT 9 >= 7;
 SELECT (9 > 7) AND (12 < 27);
 SELECT (9 > 7) OR (12 < 27);
 SELECT (9 > 7) IS TRUE;
-SELECT (9 > 7) IS NOT TRUE;
+SELECT (9 > 7) IS NOT TRUE; == First the data type is converted into the latter the it is compared.
+SELECT 9 IN (1, 5, 9); == Will give true.
 **
 ## JOINING 
 
@@ -159,7 +160,7 @@ example- 1234567.89
   a ENUM( 'Pablo', 'Henri', 'Jackson' )
 ); == ENUM OR SET
 
-** CASES **
+**hCASES**
 
 SELECT
   CASE WHEN a < 5 THEN 'true' ELSE 'false' END AS boolA,
@@ -172,3 +173,65 @@ SELECT
   CASE b WHEN 1 THEN 'true' ELSE 'false' END AS boolB 
   FROM booltest
 ;
+
+## String Comparison
+
+--> SELECT Name FROM country WHERE Name LIKE '_a%' ORDER BY Name;
+
+--> SELECT Name FROM country WHERE STRCMP(Name, 'France') <= 0 ORDER BY Name;
+
+**Regular Expressions**
+
+--> SELECT Name FROM country WHERE Name RLIKE 'y$' ORDER BY Name;
+
+--> SELECT Name FROM country WHERE Name RLIKE '[xz][ai]' ORDER BY Name;
+
+**Concat Strings**
+
+--> SELECT CONCAT('Love', ' ', 'is', ' ', 'all', ' ', 'you', ' ', 'need'); == Love is all yotu need, will come on the output.
+
+**Conversion**
+
+--> SELECT HEX(32742);
+
+--> SELECT OCT(32742);
+
+--> SELECT BIN(32742);
+
+--> SELECT CONV('32742',initial_base,to_final_base);
+
+**Trimming Padding**
+
+--> SELECT * FROM customer WHERE name LIKE TRIM('  Bill Smith  '); == Remove Spaces .. LTRIM (remove spaces from left) and RTRIM 
+
+--> SELECT CONCAT(':', TRIM('x' FROM 'xxxBill Smithxxx'), ':'); == Customizing TRIM for other values
+
+--> SELECT LPAD('Price', 20, '. '); == will add '.' 20 times to the left of 'Price'
+
+--> SELECT RPAD('Price', 20, '. '); == will add '.' 20 times to the right of 'Price'
+
+**Changing Cases**
+
+--> SELECT UPPER(name) FROM customer; == UCASE can also be used to convert to upper case
+
+--> SELECT LOWER(name) FROM customer; == LCASE can also be used to convert to lower case
+
+--> SELECT CONCAT(UPPER(SUBSTRING(name, 1, 1)),LOWER(SUBSTRING(name, 2))) FROM customer;
+
+**Substring**
+
+--> SELECT SUBSTRING('this is a string', 6); == will give  'string' as output.
+
+--> SELECT SUBSTR('this is a string', 6, 4); == will give 'is a' as output
+
+--> SELECT SUBSTR('this is a string', -6); == count 6 from last.
+
+--> SELECT SUBSTR('this is a string', -6, 4); == 'stri'
+
+--> SELECT SUBSTRING_INDEX('this is a string', ' delimiter', No_of Times_Delimiter_should_be_encountered);
+
+**SOUNDEX**
+
+--> SELECT SOUNDEX('acting'), SOUNDEX('action');
+
+--> SELECT 'bill' SOUNDS LIKE 'boil', 'bill' SOUNDS LIKE 'phil';
