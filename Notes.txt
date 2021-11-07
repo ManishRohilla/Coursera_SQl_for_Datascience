@@ -28,6 +28,10 @@ To create temporary tables -- create a copy, essentially of another table or pul
 
 CREATE TEMPORARY TABLE employee_pers (
                                            -> SELECT Name,Contact from employee);
+create temporary table sandals as
+    -> (
+    -> Select ID,Brand, Color from shoes where type="sandals"
+    -> );
 
 To Insert Values
 
