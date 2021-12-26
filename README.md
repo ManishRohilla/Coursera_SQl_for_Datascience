@@ -54,10 +54,17 @@
 
 --> SELECT * from table_name; -- To print complete table.
 
+## Where Clause 
+![image](https://user-images.githubusercontent.com/63550539/147407231-69c6fa97-1717-457c-9eb9-e58d3f38e194.png)
+![image](https://user-images.githubusercontent.com/63550539/147407705-2c72cb46-d84f-4cfd-8650-a428d7ac6d16.png)
+
+
 --> SELECT * from table_name WHERE column_name = 'Condition'; == To get rows from table which satisfies the condition given using WHERE clause.
 
 --> SELECT column_name, column_name/2 AS view_name FROM table_name WHERE column_name >= 2 
      ORDER BY column_name DESC;
+
+--> SELECT * from table_name WHERE price between 1 and 10; 
 
 --> SELECT * FROM table_name WHERE col_name LIKE 'value_' OR col_name LIKE 'value%';
 
