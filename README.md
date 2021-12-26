@@ -66,6 +66,10 @@
 
 --> SELECT * from table_name WHERE price between 1 and 10; 
 
+--> SELECT * from table_name WHERE price IN (100,1050,200); 
+
+--> SELECT * from table_name WHERE price = 100 or 1050; 
+
 --> SELECT * FROM table_name WHERE col_name LIKE 'value_' OR col_name LIKE 'value%';
 
 ## INSERTING 
